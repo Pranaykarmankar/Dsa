@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int>freq;
+        int n = nums.size();
+        int maxfreq = 0;
+        int ans=0;
+        for(int i =0;i<n;i++){
+            freq[nums[i]]++;
+        }
+
+        for(int i =0;i<n;i++){
+            if(freq[nums[i]] > maxfreq){
+                maxfreq= freq[nums[i]];
+                ans = nums[i];
+            }
+        }
+        return ans;
+
+    }
+};
