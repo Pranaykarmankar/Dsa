@@ -1,0 +1,53 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& mat, int t) {
+
+        int n = mat.size();
+        int m = mat[0].size();
+
+        int si = 0;
+        int ei = n - 1;
+
+        // Binary search on rows
+        while (si <= ei) {
+
+            int mid = si + (ei - si) / 2;
+
+            if (mat[mid][0] <= t && t <= mat[mid][m - 1]) {
+                return search(mat[mid], t);
+            }
+            else if (t < mat[mid][0]) {
+                ei = mid - 1;
+            }
+            else {
+                si = mid + 1;
+            }
+        }
+
+        return false;
+    }
+
+    // Binary search inside selected row
+    bool search(vector<int>& arr, int t) {
+
+        int si = 0;
+        int ei = arr.size() - 1;
+
+        while (si <= ei) {
+
+            int mid = si + (ei - si) / 2;
+
+            if (arr[mid] == t) {
+                return true;
+            }
+            else if (arr[mid] > t) {
+                ei = mid - 1;
+            }
+            else {
+                si = mid + 1;
+            }
+        }
+
+        return false;
+    }
+};
