@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map<char,int>f1;
+        unordered_map<char,int>f2;
+
+        for(auto i : s){
+            f1[i]++;
+        }
+        for(auto j : t){
+            f2[j]++;
+        }
+
+        if(f1==f2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
